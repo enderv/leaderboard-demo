@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: leaderboards-demo
+  labels:
+    app: leaderboards-demo
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  clusterIP: None
+  selector:
+    app: leaderboards-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaderboards-demo
+  labels:
+    app: leaderboards-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: leaderboards-demo
+  template:
+    metadata:
+      labels:
+        app: leaderboards-demo
+    spec:
+      containers:
+      - name: leaderboards-demo
+        image: leaderboards-demo
