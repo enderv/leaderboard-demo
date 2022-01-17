@@ -1,5 +1,5 @@
 apiVersion: skaffold/v2beta22
-kind: Config
+kind: Confighelnm
 metadata:
   name: leaderboard-howto
 build:
@@ -10,7 +10,8 @@ build:
 deploy:
   kubectl:
     manifests:
-    - deployment.yaml
+    - ./kube-manifests/deployment.yaml
+    - ./kube-manifests/redis.yaml
 portForward:
 - resourceType: service
   resourceName: leaderboards-demo
